@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 class QuestionController
 {
@@ -15,7 +16,7 @@ class QuestionController
     }
 
     /**
-     * @Route("/questions/how-to-tie-my-shoes-with-magic")
+     * @Route("/questions/{slug}")
      */
     public function show($slug)
     {
