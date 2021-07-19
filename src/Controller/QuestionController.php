@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Twig\Environment;
+use Knp\Bundle\MarkdownBundle\MarkdownParserInterface;
 
 class QuestionController extends AbstractController
 {
@@ -27,8 +28,10 @@ class QuestionController extends AbstractController
     /**
      * @Route("/questions/{slug}", name="app_question_show")
      */
-    public function show($slug)
+    public function show($slug, MarkdownParserInterface $markdownParser)
     {
+        $questionText = 'I\'ve been turned into a cat, any thoughts on how to turn back? While I\'m **adorable**, I don\'t really care for cat food.';
+        $parsedQuestionText = $markdownParser->transformMarkdown($questionText);
         $answers = [
             'Make sure your cat is sitting purrrfectly still 🤣',
             'Honestly, I like furry shoes better than MY cat',
@@ -38,7 +41,7 @@ class QuestionController extends AbstractController
         return $this->render('question/show.html.twig', [
             'question' => ucwords(str_replace('-', ' ', $slug)),
             'answers' => $answers,
-
+            'questionText' => $parsedQuestionText,
         ]);
     }
 }
