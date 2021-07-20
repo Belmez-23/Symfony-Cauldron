@@ -17,7 +17,7 @@ body {
 .q-container-show {
     border-top-right-radius: .25rem;
     border-top-left-radius: .25rem;
-    background-color: #b458ed;
+    background-color: rgba(236, 205, 245, 0.44);
 }
 .q-container img, .q-container-show img {
     border: 2px solid #fff;
@@ -59,15 +59,15 @@ body {
     color: #444;
 }
 .vote-up:hover {
-    color: #3D9970;
+    color: #d0ffeb;
 }
 .vote-down:hover {
-    color: #ff3636;
+    color: #ffb6b6;
 }
 .btn-question {
     color: #FFFFFF;
     background-color: #e858ed;
-    border-color: #b43fd4;
+    border-color: #d1b3de;
 }
 .btn-question:hover,
 .btn-question:focus,
@@ -76,7 +76,7 @@ body {
 .open .dropdown-toggle.btn-question {
     color: #FFFFFF;
     background-color: #cf3fd4;
-    border-color: #a73fd4;
+    border-color: #dabeea;
 }
 .btn-question:active,
 .btn-question.active,
