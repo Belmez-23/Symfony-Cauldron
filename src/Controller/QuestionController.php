@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\QuestionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Question;
 use App\Service\MarkdownHelper;
@@ -27,16 +28,12 @@ class QuestionController extends AbstractController
     /**
      * @Route("/", name="app_homepage")
      */
-    public function homepage(Environment $twigEnvironment)
+    public function homepage(QuestionRepository $repository)
     {
-        /*
-        // fun example of using the Twig service directly!
-        $html = $twigEnvironment->render('question/homepage.html.twig');
-
-        return new Response($html);
-        */
-
-        return $this->render('question/homepage.html.twig');
+        $questions = $repository->findAllAskedOrderedByNewest();
+        return $this->render('question/homepage.html.twig', [
+            'questions' => $questions,
+        ]);
     }
 
     /**
